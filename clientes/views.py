@@ -9,6 +9,9 @@ class ClientesViewSet(viewsets.ModelViewSet):
     # Poderia buscar ordenado do banco de dados, ms vai se utilizar o filter mais abaixo
     # queryset = Cliente.objects.order_by("pk")
     serializer_class = ClienteSerializer
-    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
     ordering_fields = ['nome']
+    search_fields = ['nome', 'ativo', 'cpf']
+    filterset_fields = ['ativo']
+    
 
